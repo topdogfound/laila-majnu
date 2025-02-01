@@ -25,7 +25,7 @@ export default function TestDbConnection() {
       setMessage(result.message)
     } catch (error) {
       setStatus("error")
-      setMessage("An unexpected error occurred.")
+      setMessage("An unexpected error occurred." + error)
     }
   }
 

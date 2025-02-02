@@ -8,7 +8,6 @@ import Image from "next/image";
 
 export default function RootPage() {
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
-
   if (isAuthenticated) {
     redirect('/dashboard');
   } else {

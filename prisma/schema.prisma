@@ -13,3 +13,36 @@ model Apple {
   variety String
   color   String
 }
+
+model AppleVariety {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  origin        String
+  bestUse       String
+  description   String?
+  flavorProfile String
+  harvestSeason String
+  popularUses   String[]
+}
+
+model Nutrition {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  fruit       String
+  variety     String
+  calories    Float
+  carbohydrates Float
+  fiber       Float
+  sugars      Float
+  protein     Float
+  fat         Float
+  vitamin_c   Float
+  potassium   Float
+  calcium     Float
+  magnesium   Float
+  iron        Float
+  vitamin_a   Float
+  vitamin_k   Float
+  vitamin_e   Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

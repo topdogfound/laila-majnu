@@ -1,0 +1,246 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Laila-Majnu API's",
+      "version": "1.0.0",
+      "description": "API documentation of Lail Majnu project"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000/api"
+      }
+    ],
+    "paths": {
+      "/apple": {
+        "get": {
+          "summary": "Get all apples",
+          "operationId": "getApples",
+          "responses": {
+            "200": {
+              "description": "Successfully fetched apples",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Apple"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Failed to fetch apples",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new apple",
+          "operationId": "createApple",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Apple"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Successfully created apple",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Apple"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Failed to create apple",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }, 
+      "/appleVarieties": {
+        "get": {
+          "summary": "Get all apple varieties",
+          "operationId": "getAppleVarieties",
+          "responses": {
+            "200": {
+              "description": "Successfully fetched apple varieties",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/AppleVariety"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Failed to fetch apple varieties",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new apple variety",
+          "operationId": "createAppleVariety",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppleVariety"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Successfully created apple variety",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AppleVariety"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Failed to create apple variety",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Apple": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "description": "The unique identifier for the apple"
+            },
+            "name": {
+              "type": "string",
+              "description": "The name of the apple"
+            },
+            "variety": {
+              "type": "string",
+              "description": "The variety of the apple"
+            },
+            "nutrition": {
+              "type": "object",
+              "properties": {
+                "calories": {
+                  "type": "integer",
+                  "description": "The calories per serving"
+                },
+                "sugar": {
+                  "type": "integer",
+                  "description": "The sugar content per serving"
+                }
+              }
+            }
+          },
+          "required": ["name", "variety"]
+        }, 
+        "AppleVariety": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "description": "The unique identifier for the apple variety"
+            },
+            "name": {
+              "type": "string",
+              "description": "The name of the apple variety"
+            },
+            "color": {
+              "type": "string",
+              "description": "The color of the apple variety"
+            },
+            "taste": {
+              "type": "string",
+              "description": "The taste of the apple variety"
+            },
+            "nutrition": {
+              "type": "object",
+              "properties": {
+                "calories": {
+                  "type": "integer",
+                  "description": "The calories per serving"
+                },
+                "sugar": {
+                  "type": "integer",
+                  "description": "The sugar content per serving"
+                }
+              }
+            }
+          },
+          "required": ["name", "color", "taste"]
+        }
+      }
+    }, 
+    "tags": [
+        {
+        "name": "Apple Varieties",
+        "description": "Operations related to managing apple varieties"
+        }
+    ]
+  }
+  

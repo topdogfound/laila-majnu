@@ -7,18 +7,18 @@ import { login } from '@/store/features/authSlice';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-interface loginValue {
-    email: string,
-    password: string,
+interface LoginValue {
+    email: string;
+    password: string;
 }
+
 export default function LoginPage() {
     const dispatch = useDispatch();
     const router = useRouter();
 
-    const handleLogin = async (values: loginValue) => {
+    const handleLogin = async (values: LoginValue) => {
         try {
-            console.log(values)
-            dispatch(login());
+            dispatch(login(values.email));
             router.push('/dashboard');
         } catch (error) {
             console.error('Login failed:', error);

@@ -1,10 +1,32 @@
 'use client';
 
+import { AuthForm } from '@/components/forms/AuthForm';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Link from 'next/link';
+
+interface SignupValues {
+    email: string;
+    password: string;
+}
+
 export default function SignupPage() {
+    const handleSignup = async (values: SignupValues) => {
+        try {
+            console.log('Signup values:', values);
+        } catch (error) {
+            console.error('Signup failed:', error);
+        }
+    };
+
     return (
-        <div>
-            <h1 className="text-2xl font-bold mb-4">Sign Up</h1>
-            {/* Add signup form here */}
-        </div>
+        <Card>
+            <CardHeader>
+                <CardTitle>Sign Up</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <AuthForm onSubmit={handleSignup} type="signup" />
+            </CardContent>
+            <Link href="/login" className="p-3 mb-2">Already have an account? Login</Link>
+        </Card>
     );
 } 
